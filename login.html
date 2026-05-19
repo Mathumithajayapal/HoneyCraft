@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+  <title>GoldenHive | Login – Artisanal Honey & Beeswax</title>
+  <!-- EXACT FONTS: Playfair Display + Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-gradient-start: #ffffff;
+      --bg-gradient-end: #ffffff;
+      --text-primary: #2d1f1a;
+      --text-secondary: #6b4c3a;
+      --card-bg: rgba(255, 255, 255, 0.96);
+      --accent-color: #FC870D;
+      --accent-hover: #e07608;
+      --accent-light: #fff0e0;
+      --shadow-sm: 0 8px 24px rgba(0, 0, 0, 0.06);
+      --shadow-md: 0 20px 35px -10px rgba(0, 0, 0, 0.12);
+      --border-light: #f0e4d8;
+      --input-bg: #ffffff;
+      --error-color: #e74c3c;
+      --font-heading: 'Playfair Display', serif;
+      --font-body: 'Poppins', sans-serif;
+    }
+
+    /* DARK MODE: Card background becomes pure BLACK, body also black for immersive deep look */
+    body.dark {
+      --bg-gradient-start: #000000;
+      --bg-gradient-end: #000000;
+      --text-primary: #f5f0eb;
+      --text-secondary: #c0b0a0;
+      --card-bg: #000000;            /* ✅ pure black card */
+      --accent-color: #FC9F2E;
+      --accent-hover: #FDAE4C;
+      --accent-light: #2a2a1a;
+      --border-light: #2a2a2a;
+      --input-bg: #111111;           /* subtle dark input for readability */
+      --shadow-md: 0 20px 35px -8px rgba(0, 0, 0, 0.6);
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: #ffffff;
+      min-height: 100vh;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      transition: background 0.3s ease, color 0.2s;
+      position: relative;
+      overflow: auto;
+    }
+
+    body.dark {
+      background: #000000;           /* body background also black for seamless integration */
+    }
+
+    /* Login Container - perfectly centered */
+    .login-container {
+      max-width: 460px;
+      width: 100%;
+      margin: 0 auto;
+      animation: fadeInUp 0.5s ease-out;
+      height: auto;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(15px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+
+    /* Login Card – now adapts to pure black in dark mode */
+    .login-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(0px);
+      border-radius: 36px;
+      padding: 28px 32px;
+      box-shadow: var(--shadow-md);
+      border: 1px solid rgba(252, 135, 13, 0.25);
+      transition: all 0.3s ease;
+    }
+
+    /* In dark mode, give a subtle golden edge to the card */
+    body.dark .login-card {
+      border: 1px solid rgba(252, 159, 46, 0.35);
+      box-shadow: 0 20px 35px -8px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(252, 159, 46, 0.1);
+    }
+
+    /* Logo Section - GoldenHive Styling */
+    .logo-section {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .logo-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .logo-icon {
+      font-size: 2.4rem;
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+      color: #FC870D;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0);}
+      50% { transform: translateY(-3px);}
+    }
+
+    .logo-text {
+      font-size: 1.9rem;
+      font-weight: 800;
+      background: linear-gradient(45deg, #FC870D, #FC9F2E);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-family: 'Playfair Display', serif;
+      letter-spacing: -0.5px;
+    }
+
+    .logo-text a {
+      text-decoration: none;
+      background: linear-gradient(45deg, #FC870D, #FC9F2E);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .logo-tagline {
+      font-size: 0.7rem;
+      color: var(--text-secondary);
+      background: rgba(252, 135, 13, 0.12);
+      display: inline-block;
+      padding: 5px 14px;
+      border-radius: 40px;
+      font-family: var(--font-body);
+      font-weight: 500;
+    }
+
+    /* Card Title */
+    .card-title {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .card-title h1 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      font-family: var(--font-heading);
+      color: var(--text-primary);
+      margin-bottom: 6px;
+    }
+
+    .card-title p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      font-family: var(--font-body);
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .input-label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--text-primary);
+      font-family: var(--font-body);
+    }
+
+    .input-label i {
+      margin-right: 8px;
+      color: #FC870D;
+      width: 20px;
+    }
+
+    .input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .input-icon {
+      position: absolute;
+      left: 16px;
+      color: #FC870D;
+      font-size: 0.95rem;
+      pointer-events: none;
+    }
+
+    .input-field {
+      width: 100%;
+      padding: 12px 16px 12px 44px;
+      border: 2px solid var(--border-light);
+      border-radius: 60px;
+      font-size: 0.95rem;
+      font-family: var(--font-body);
+      background: var(--input-bg);
+      color: var(--text-primary);
+      transition: all 0.2s;
+      outline: none;
+    }
+
+    .input-field:focus {
+      border-color: #FC870D;
+      box-shadow: 0 0 0 3px rgba(252, 135, 13, 0.2);
+    }
+
+    /* Dark mode input field refinement */
+    body.dark .input-field {
+      border-color: #3a3a3a;
+      background: #0c0c0c;
+    }
+    body.dark .input-field:focus {
+      border-color: #FC9F2E;
+      box-shadow: 0 0 0 3px rgba(252, 159, 46, 0.3);
+    }
+
+    .password-toggle {
+      position: absolute;
+      right: 18px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      color: var(--text-secondary);
+      font-size: 1rem;
+      transition: color 0.2s;
+      padding: 6px;
+    }
+
+    .password-toggle:hover {
+      color: #FC870D;
+    }
+
+    .options-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      font-size: 0.8rem;
+    }
+
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      color: var(--text-secondary);
+      font-family: var(--font-body);
+    }
+
+    .checkbox-label input {
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+      accent-color: #FC870D;
+    }
+
+    .forgot-link {
+      color: #FC870D;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+      font-family: var(--font-body);
+    }
+
+    .forgot-link:hover {
+      color: #e07608;
+      text-decoration: underline;
+    }
+
+    .login-btn {
+      width: 100%;
+      background: #FC870D;
+      border: none;
+      padding: 12px;
+      border-radius: 60px;
+      font-weight: 700;
+      font-size: 1rem;
+      color: white;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-family: var(--font-body);
+      margin-bottom: 20px;
+    }
+
+    .login-btn:hover {
+      background: #e07608;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 20px rgba(252, 135, 13, 0.3);
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      margin: 18px 0;
+      color: var(--text-secondary);
+      font-size: 0.75rem;
+      font-family: var(--font-body);
+    }
+
+    .divider::before,
+    .divider::after {
+      content: '';
+      flex: 1;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .divider span {
+      padding: 0 14px;
+    }
+
+    .social-login {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .social-btn {
+      flex: 1;
+      background: transparent;
+      border: 2px solid var(--border-light);
+      border-radius: 60px;
+      padding: 10px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-family: var(--font-body);
+      font-weight: 500;
+    }
+
+    .social-btn:hover {
+      border-color: #FC870D;
+      background: rgba(252, 135, 13, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .social-btn i { font-size: 1rem; }
+    .social-btn.google i { color: #db4437; }
+    .social-btn.apple i { color: #000000; }
+    body.dark .social-btn.apple i { color: #ffffff; }
+
+    .register-link {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      font-family: var(--font-body);
+    }
+
+    .register-link a {
+      color: #FC870D;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    /* Top-Right Controls */
+    .top-controls {
+      position: fixed;
+      top: 16px;
+      right: 20px;
+      display: flex;
+      gap: 12px;
+      z-index: 1000;
+    }
+    body[dir="rtl"] .top-controls {
+      right: auto;
+      left: 20px;
+    }
+
+    .control-icon {
+      background: var(--card-bg);
+      border: 1px solid rgba(252, 135, 13, 0.4);
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s;
+      backdrop-filter: blur(4px);
+    }
+    body.dark .control-icon {
+      background: #000000;
+      border-color: rgba(252, 159, 46, 0.5);
+    }
+
+    .control-icon:hover {
+      transform: scale(1.05);
+      border-color: #FC870D;
+      background: rgba(252, 135, 13, 0.15);
+    }
+
+    .control-icon i {
+      font-size: 1.2rem;
+      color: #FC870D;
+    }
+
+    .rtl-text-btn {
+      background: var(--card-bg);
+      border: 1px solid rgba(252, 135, 13, 0.4);
+      padding: 0 16px;
+      height: 42px;
+      border-radius: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s;
+      backdrop-filter: blur(4px);
+      font-weight: 600;
+      font-size: 0.8rem;
+      font-family: var(--font-body);
+      color: #FC870D;
+      gap: 8px;
+    }
+    body.dark .rtl-text-btn {
+      background: #000000;
+      border-color: rgba(252, 159, 46, 0.5);
+    }
+
+    .rtl-text-btn:hover {
+      transform: scale(1.03);
+      border-color: #FC870D;
+      background: rgba(252, 135, 13, 0.15);
+    }
+
+    /* Error Message */
+    .error-message {
+      background: rgba(231, 76, 60, 0.12);
+      border-left: 4px solid #e74c3c;
+      padding: 10px 14px;
+      border-radius: 16px;
+      margin-bottom: 18px;
+      font-size: 0.8rem;
+      color: #e74c3c;
+      display: none;
+    }
+
+    .error-message.show { display: flex; gap: 8px; align-items: center; }
+
+    /* RTL Overrides */
+    body[dir="rtl"] .input-icon {
+      left: auto;
+      right: 16px;
+    }
+    body[dir="rtl"] .input-field {
+      padding: 12px 44px 12px 16px;
+    }
+    body[dir="rtl"] .password-toggle {
+      right: auto;
+      left: 18px;
+    }
+    body[dir="rtl"] .input-label i {
+      margin-right: 0;
+      margin-left: 8px;
+    }
+    body[dir="rtl"] .checkbox-label {
+      flex-direction: row-reverse;
+    }
+    body[dir="rtl"] .social-btn {
+      flex-direction: row-reverse;
+    }
+    body[dir="rtl"] .register-link a i {
+      transform: rotate(180deg);
+      display: inline-block;
+    }
+    body[dir="rtl"] .logo-wrapper {
+      flex-direction: row-reverse;
+    }
+
+    /* Responsive Refinements */
+    @media (max-width: 520px) {
+      body { padding: 12px; }
+      .login-card { padding: 24px 22px; }
+      .logo-text { font-size: 1.6rem; }
+      .card-title h1 { font-size: 1.4rem; }
+      .input-field { padding: 11px 14px 11px 42px; }
+    }
+
+    @media (max-width: 440px) {
+      .login-card { padding: 20px 18px; }
+      .logo-section { margin-bottom: 18px; }
+      .logo-text { font-size: 1.5rem; }
+      .card-title { margin-bottom: 18px; }
+      .card-title h1 { font-size: 1.3rem; }
+      .form-group { margin-bottom: 14px; }
+      .options-row { margin-bottom: 20px; }
+      .login-btn { padding: 11px; font-size: 0.9rem; }
+    }
+
+    @media (max-width: 380px) {
+      .login-card { padding: 18px 14px; }
+      .logo-text { font-size: 1.35rem; }
+      .logo-tagline { font-size: 0.6rem; }
+      .card-title h1 { font-size: 1.2rem; }
+      .input-field { font-size: 0.85rem; padding: 10px 12px 10px 38px; }
+      .social-btn span { display: none; }
+      .social-btn { padding: 9px; }
+      .social-btn i { font-size: 1.1rem; }
+      .top-controls { top: 12px; right: 12px; gap: 8px; }
+      .control-icon { width: 36px; height: 36px; }
+      .rtl-text-btn { height: 36px; padding: 0 12px; font-size: 0.7rem; }
+    }
+
+    @media (max-height: 700px) and (min-width: 400px) {
+      .login-card { padding: 20px 28px; }
+      .logo-section { margin-bottom: 12px; }
+      .logo-text { font-size: 1.5rem; }
+      .card-title { margin-bottom: 14px; }
+      .card-title h1 { font-size: 1.3rem; }
+      .form-group { margin-bottom: 12px; }
+      .options-row { margin-bottom: 16px; }
+      .login-btn { margin-bottom: 14px; padding: 10px; }
+      .divider { margin: 12px 0; }
+    }
+
+    @media (max-height: 580px) {
+      .login-card { padding: 14px 20px; }
+      .logo-section { margin-bottom: 8px; }
+      .logo-text { font-size: 1.3rem; }
+      .logo-tagline { font-size: 0.55rem; padding: 2px 10px; }
+      .card-title h1 { font-size: 1.1rem; }
+      .card-title p { font-size: 0.7rem; }
+      .input-field { padding: 8px 12px 8px 38px; font-size: 0.8rem; }
+      .login-btn { padding: 8px; font-size: 0.85rem; }
+    }
+
+    .login-btn.loading {
+      pointer-events: none;
+      opacity: 0.8;
+    }
+    .login-btn.loading i {
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      from { transform: rotate(0deg);}
+      to { transform: rotate(360deg);}
+    }
+
+    /* Subtle background decoration */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+      background-image: radial-gradient(circle at 10% 20%, rgba(252, 135, 13, 0.03) 0%, transparent 70%);
+      z-index: -1;
+    }
+    body.dark::before {
+      background-image: radial-gradient(circle at 10% 20%, rgba(252, 159, 46, 0.06) 0%, transparent 80%);
+    }
+    body::after {
+      content: '🍯';
+      position: fixed;
+      bottom: 16px;
+      left: 16px;
+      font-size: 1.4rem;
+      opacity: 0.08;
+      pointer-events: none;
+      z-index: -1;
+    }
+    body.dark::after { opacity: 0.05; }
+    body[dir="rtl"]::after { left: auto; right: 16px; }
+    
+    @media (max-height: 620px) {
+      body::after { display: none; }
+    }
+    
+    .login-card, .input-field, .social-btn, .control-icon, .rtl-text-btn {
+      transition: background 0.3s ease, border-color 0.2s ease, transform 0.2s ease;
+    }
+  </style>
+</head>
+<body>
+
+<div class="top-controls">
+  <div class="control-icon" id="themeToggle" title="Dark/Light Mode">
+    <i class="fas fa-moon"></i>
+  </div>
+  <div class="rtl-text-btn" id="rtlToggleBtn">
+     <span id="rtlBtnText">RTL</span>
+  </div>
+</div>
+
+<div class="login-container">
+  <div class="login-card">
+    <div class="logo-section">
+      <div class="logo-wrapper">
+        <i class="fas fa-jar logo-icon"></i>
+        <span class="logo-text"><a href="index.html">GoldenHive</a></span>
+      </div>
+      <div class="logo-tagline">
+        <i class="fas fa-droplet"></i> Artisanal Honey & Beeswax Apothecary
+      </div>
+    </div>
+
+    <div class="card-title">
+      <h1>Welcome Back!</h1>
+      <p>Sign in to your GoldenHive account</p>
+    </div>
+
+    <div id="loginError" class="error-message">
+      <i class="fas fa-exclamation-triangle"></i> <span id="errorText">Invalid email or password</span>
+    </div>
+
+    <form id="loginForm">
+      <div class="form-group">
+        <label class="input-label"><i class="fas fa-envelope"></i> Email Address</label>
+        <div class="input-wrapper">
+          <i class="fas fa-envelope input-icon"></i>
+          <input type="email" id="emailInput" class="input-field" placeholder="hello@goldenhive.com" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="input-label"><i class="fas fa-lock"></i> Password</label>
+        <div class="input-wrapper">
+          <i class="fas fa-key input-icon"></i>
+          <input type="password" id="passwordInput" class="input-field" placeholder="••••••••" required>
+          <button type="button" class="password-toggle" id="togglePassword">
+            <i class="far fa-eye-slash"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="options-row">
+        <label class="checkbox-label">
+          <input type="checkbox" id="rememberMe"> <span>Remember me</span>
+        </label>
+        <a href="#" class="forgot-link" id="forgotPassword">Forgot password?</a>
+      </div>
+
+      <button type="submit" class="login-btn" id="loginBtn">
+        <i class="fas fa-arrow-right-to-bracket"></i> Sign In
+      </button>
+    </form>
+
+    <div class="divider">
+      <span>or continue with</span>
+    </div>
+
+    <div class="social-login">
+      <button class="social-btn google" id="googleLogin">
+        <i class="fab fa-google"></i> <span>Google</span>
+      </button>
+      <button class="social-btn apple" id="appleLogin">
+        <i class="fab fa-apple"></i> <span>Apple</span>
+      </button>
+    </div>
+
+    <div class="register-link">
+      Don't have an account? <a href="signup.html" id="registerLink">Create Account <i class="fas fa-arrow-right"></i></a>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    const form = document.getElementById('loginForm');
+    const emailInput = document.getElementById('emailInput');
+    const passwordInput = document.getElementById('passwordInput');
+    const loginBtn = document.getElementById('loginBtn');
+    const errorDiv = document.getElementById('loginError');
+    const errorText = document.getElementById('errorText');
+    const togglePasswordBtn = document.getElementById('togglePassword');
+    const themeToggle = document.getElementById('themeToggle');
+    const rtlToggleBtn = document.getElementById('rtlToggleBtn');
+    const rtlBtnTextSpan = document.getElementById('rtlBtnText');
+    const rememberCheck = document.getElementById('rememberMe');
+    const forgotLink = document.getElementById('forgotPassword');
+    const registerLink = document.getElementById('registerLink');
+    const googleBtn = document.getElementById('googleLogin');
+    const appleBtn = document.getElementById('appleLogin');
+
+    // Demo credentials for GoldenHive
+    const DEMO_EMAIL = "golden@goldenhive.com";
+    const DEMO_PASSWORD = "goldenhive123";
+
+    function showError(message) {
+      errorText.innerText = message;
+      errorDiv.classList.add('show');
+      setTimeout(() => {
+        errorDiv.classList.remove('show');
+      }, 3200);
+    }
+
+    function showSuccessToast(msg) {
+      alert(msg);
+    }
+
+    function loadSavedCredentials() {
+      const savedEmail = localStorage.getItem('goldenhive_email');
+      const savedRemember = localStorage.getItem('goldenhive_remember');
+      if (savedRemember === 'true' && savedEmail) {
+        emailInput.value = savedEmail;
+        rememberCheck.checked = true;
+      }
+    }
+    loadSavedCredentials();
+
+    function handleLogin(email, password) {
+      if (email === DEMO_EMAIL && password === DEMO_PASSWORD) {
+        if (rememberCheck.checked) {
+          localStorage.setItem('goldenhive_email', email);
+          localStorage.setItem('goldenhive_remember', 'true');
+        } else {
+          localStorage.removeItem('goldenhive_email');
+          localStorage.setItem('goldenhive_remember', 'false');
+        }
+        loginBtn.classList.add('loading');
+        const originalContent = loginBtn.innerHTML;
+        loginBtn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Signing In...';
+        setTimeout(() => {
+          loginBtn.classList.remove('loading');
+          loginBtn.innerHTML = originalContent;
+          showSuccessToast('🍯 Welcome to GoldenHive!\n✨ Login Successful. Explore our artisanal honey collection.');
+        }, 800);
+        return true;
+      } else {
+        showError('Invalid email or password. Try golden@goldenhive.com / goldenhive123');
+        return false;
+      }
+    }
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = emailInput.value.trim();
+      const password = passwordInput.value;
+      if (!email) { showError('Please enter your email address'); return; }
+      if (!password) { showError('Please enter your password'); return; }
+      handleLogin(email, password);
+    });
+
+    let passwordVisible = false;
+    togglePasswordBtn.addEventListener('click', () => {
+      passwordVisible = !passwordVisible;
+      passwordInput.type = passwordVisible ? 'text' : 'password';
+      togglePasswordBtn.innerHTML = passwordVisible ? '<i class="far fa-eye"></i>' : '<i class="far fa-eye-slash"></i>';
+    });
+
+    // Dark Mode – pure black card and body background
+    const body = document.body;
+    const themeIcon = themeToggle.querySelector('i');
+    function setDarkMode(enabled) {
+      if (enabled) {
+        body.classList.add('dark');
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
+        localStorage.setItem('goldenhive-dark', 'enabled');
+      } else {
+        body.classList.remove('dark');
+        themeIcon.classList.remove('fa-sun');
+        themeIcon.classList.add('fa-moon');
+        localStorage.setItem('goldenhive-dark', 'disabled');
+      }
+    }
+    const savedDark = localStorage.getItem('goldenhive-dark');
+    setDarkMode(savedDark === 'enabled');
+    themeToggle.addEventListener('click', () => setDarkMode(!body.classList.contains('dark')));
+
+    // RTL handling
+    const htmlElem = document.documentElement;
+    function setDirection(direction) {
+      htmlElem.setAttribute('dir', direction);
+      localStorage.setItem('goldenhive-dir', direction);
+      rtlBtnTextSpan.innerText = direction === 'rtl' ? 'LTR' : 'RTL';
+    }
+    const savedDir = localStorage.getItem('goldenhive-dir');
+    setDirection(savedDir === 'rtl' ? 'rtl' : 'ltr');
+    rtlToggleBtn.addEventListener('click', () => {
+      const currentDir = htmlElem.getAttribute('dir');
+      setDirection(currentDir === 'rtl' ? 'ltr' : 'rtl');
+      rtlToggleBtn.style.transform = 'scale(0.96)';
+      setTimeout(() => { rtlToggleBtn.style.transform = ''; }, 150);
+    });
+
+    forgotLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      alert('📧 Password reset link has been sent to your registered email.');
+    });
+   
+    googleBtn.addEventListener('click', () => alert('🔐 Google Sign-In (Demo) — Secure authentication coming soon.'));
+    appleBtn.addEventListener('click', () => alert('🍎 Apple Sign-In (Demo) — Seamless login experience.'));
+
+    // Double-click logo to auto-fill demo credentials
+    const logoWrapper = document.querySelector('.logo-wrapper');
+    if (logoWrapper) {
+      logoWrapper.addEventListener('dblclick', () => {
+        emailInput.value = DEMO_EMAIL;
+        passwordInput.value = DEMO_PASSWORD;
+        showError('🍯 Demo credentials filled! Click Sign In to experience GoldenHive.');
+      });
+    }
+  })();
+</script>
+</body>
+</html>

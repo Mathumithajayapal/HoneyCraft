@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>404 - Page Not Found</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+      background: #fefaf5;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      color: #1e2a3a;
+    }
+
+    .error-container {
+      max-width: 580px;
+      width: 100%;
+      background: #ffffff;
+      border-radius: 32px;
+      box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.02);
+      padding: 2.5rem 2rem;
+      text-align: center;
+      transition: box-shadow 0.2s ease;
+      border: 1px solid #fff0e0;
+    }
+
+    /* subtle hover effect - no layout shift */
+    .error-container:hover {
+      box-shadow: 0 25px 40px -16px rgba(252, 135, 13, 0.12);
+      border-color: #ffe3cc;
+    }
+
+    .error-code {
+      font-size: 7rem;
+      font-weight: 800;
+      line-height: 1;
+      background: linear-gradient(135deg, #FC870D, #e07a0a, #b35f06);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+    }
+
+    .title {
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: #1e2a3a;
+    }
+
+    .description {
+      font-size: 1rem;
+      color: #4a5b6e;
+      line-height: 1.5;
+      max-width: 420px;
+      margin: 0 auto 1.8rem;
+    }
+
+    .divider {
+      width: 60px;
+      height: 3px;
+      background: #FC870D;
+      margin: 0 auto 1.8rem;
+      border-radius: 3px;
+      opacity: 0.6;
+    }
+
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+
+    .btn-primary, .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.7rem 1.6rem;
+      border-radius: 60px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: none;
+      font-family: inherit;
+    }
+
+    .btn-primary {
+      background: #FC870D;
+      color: white;
+      box-shadow: 0 2px 6px rgba(252, 135, 13, 0.2);
+    }
+
+    .btn-primary:hover {
+      background: #e07608;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(252, 135, 13, 0.25);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid #FC870D;
+      color: #FC870D;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(252, 135, 13, 0.08);
+      border-color: #e07608;
+      color: #e07608;
+      transform: translateY(-1px);
+    }
+
+    .help-links {
+      border-top: 1px solid #f0e4d8;
+      padding-top: 1.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .help-links p {
+      font-size: 0.75rem;
+      color: #8b6b54;
+      margin-bottom: 0.8rem;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .link-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    .link-row a {
+      color: #5a6e7c;
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .link-row a:hover {
+      color: #FC870D;
+      text-decoration: underline;
+    }
+
+    /* responsive */
+    @media (max-width: 520px) {
+      body {
+        padding: 1.2rem;
+      }
+      .error-container {
+        padding: 1.8rem 1.2rem;
+      }
+      .error-code {
+        font-size: 5rem;
+      }
+      .title {
+        font-size: 1.5rem;
+      }
+      .description {
+        font-size: 0.9rem;
+      }
+      .btn-primary, .btn-secondary {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.85rem;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .btn-group {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .btn-primary, .btn-secondary {
+        justify-content: center;
+      }
+      .link-row {
+        gap: 1rem;
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    /* optional simple animation */
+    @keyframes fadeSlide {
+      0% { opacity: 0; transform: translateY(10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .error-container {
+      animation: fadeSlide 0.4s ease-out;
+    }
+  </style>
+</head>
+<body>
+
+<div class="error-container">
+  <div class="error-code">404</div>
+  <h1 class="title">Page not found</h1>
+  <div class="divider"></div>
+  <p class="description">
+    Sorry, the page you are looking for doesn't exist or has been moved.<br>
+    Let's get you back on track.
+  </p>
+
+  <div class="btn-group">
+    <a href="index.html" class="btn-primary">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3 9L12 3L21 9L12 15L3 9Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M5 11V19H19V11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Back to Home
+    </a>
+    <a href="#" class="btn-secondary" id="reportLink">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20 4L4 20M4 4L20 20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      Report Issue
+    </a>
+  </div>
+</div>
+
+<script>
+  // simple interactive for "Report Issue" – no layout shifts, just alert
+  const reportBtn = document.getElementById('reportLink');
+  if (reportBtn) {
+    reportBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      alert('Thank you for letting us know.\nPlease describe the missing page to support@example.com');
+    });
+  }
+
+  // optional: home link fallback (if index.html missing, show friendly note)
+  const homeBtn = document.querySelector('.btn-primary');
+  if (homeBtn && homeBtn.getAttribute('href') === 'index.html') {
+    homeBtn.addEventListener('click', (e) => {
+      // No prevention – let it try to navigate.
+      console.log('Redirecting to homepage');
+    });
+  }
+</script>
+</body>
+</html>
