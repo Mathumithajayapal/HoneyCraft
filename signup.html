@@ -561,6 +561,51 @@
     }
     body.dark::after { opacity: 0.06; }
     body[dir="rtl"]::after { left: auto; right: 12px; }
+    /* ✅ Prevent top buttons from overlapping form on small screens */
+@media (max-width: 420px) {
+  .top-controls {
+    top: 6px;
+    right: 8px;
+    gap: 6px;
+    transform: scale(0.9);
+  }
+
+  body[dir="rtl"] .top-controls {
+    left: 8px;
+    right: auto;
+  }
+
+  .control-icon {
+    width: 34px;
+    height: 34px;
+  }
+
+  .rtl-text-btn {
+    height: 34px;
+    font-size: 0.65rem;
+    padding: 0 10px;
+  }
+
+  .signup-container {
+    margin-top: 40px; /* 👈 pushes form down so buttons never overlap */
+  }
+}
+
+/* Extra safety for very small devices (360px range) */
+@media (max-width: 380px) {
+  .signup-card {
+    padding: 14px 16px 18px 16px;
+    border-radius: 26px;
+  }
+
+  .signup-container {
+    margin-top: 48px;
+  }
+
+  .logo-text {
+    font-size: 1.3rem;
+  }
+}
   </style>
 </head>
 <body>
