@@ -4,8 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>GoldenHive | The Hive Journal — Beekeeping & Honeycraft</title>
-    <link rel="icon" type="image/jpeg" href="image\honeyworks (1).jpg">
-
+  <link rel="icon" type="image/jpeg" href="image/honeyworks (1).jpg">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet">
   <style>
@@ -87,7 +86,7 @@
       --blog-hero-overlay: rgba(0, 0, 0, 0.6);
     }
 
-    /* ---------- NAVBAR (fully preserved) ---------- */
+    /* ---------- NAVBAR (IDENTICAL TO about.html) ---------- */
     .navbar {
       position: fixed;
       top: 0;
@@ -343,22 +342,20 @@
     }
     [dir="rtl"] .dropdown-menu { left: auto; right: 0; }
 
-    /* ---------- BLOG HERO – TIGHTER GAP BETWEEN HERO AND HONEYCRAFT SECTION ---------- */
-    /* reduced bottom padding + refined min-height to close gap without affecting other sections */
+    /* ---------- BLOG HERO – matching about.html design language ---------- */
     .blog-hero {
       background: linear-gradient(var(--blog-hero-overlay), var(--blog-hero-overlay)),
                   url('image/honeydriper (1).jpg');
       background-size: cover;
       background-position: center 30%;
       background-repeat: no-repeat;
-      min-height: 70vh;          /* slightly reduced to minimize extra whitespace below hero content */
+      min-height: 70vh;
       width: 100%;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
-      /* custom padding: top keeps clearance for navbar, bottom reduced to tighten gap to Beekeeping section */
       padding: 70px 24px 32px 24px;
       border-radius: 0 0 48px 48px;
       margin-top: 0;
@@ -407,7 +404,7 @@
       }
     }
 
-    /* ---------- BLOG GRID SECTION: unchanged spacing except natural flow ---------- */
+    /* ---------- BLOG GRID SECTION ---------- */
     .blog-section {
       max-width: 1280px;
       margin: 0 auto;
@@ -552,7 +549,7 @@
       transform: translateX(-4px);
     }
 
-    /* ========== COMPACT FOOTER (unchanged) ========== */
+    /* ========== COMPACT FOOTER (identical to about.html) ========== */
     .modern-footer {
       background: linear-gradient(180deg, #fffaf1 0%, #fff4df 100%);
       border-top: 1px solid #fde2b4;
@@ -731,48 +728,56 @@
         padding-top: 0;
       }
     }
-      @media (max-width: 992px) {
-      .footer-top {
-        grid-template-columns: 1fr;
-        gap: 36px;
-      }
+    @media (max-width: 992px) {
       .footer-links-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 28px;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .modern-footer {
-        padding-top: 40px;
-      }
-      .footer-links-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(3, 1fr);
         gap: 24px;
       }
-      .footer-bottom {
-        flex-direction: column;
-        text-align: center;
-        padding-top: 20px;
-      }
-      .footer-description {
-        font-size: 0.85rem;
-      }
-      .footer-column a {
-        margin-bottom: 8px;
-      }
     }
-    @media (max-width: 992px) {
-  .footer-links-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    .nav-actions {
+  display: none;
+  align-items: center;   /* Vertical alignment */
+  gap: 16px;
+  height: 44px;          /* Same height as controls */
+}
+
+@media (min-width: 1280px) {
+  .nav-actions {
+    display: flex;
   }
+}
+
+/* Login Button */
+.btn-solid {
+  height: 44px;
+  padding: 0 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+/* RTL Button */
+.rtl-btn {
+  height: 44px;
+  padding: 0 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+/* Theme Toggle */
+.theme-toggle-pill {
+  width: 56px;
+  height: 28px;
+  align-self: center;
 }
   </style>
 </head>
 <body>
 
-  <!-- ========== NAVBAR ========== -->
+  <!-- ========== NAVBAR (EXACT REPLICA FROM about.html) ========== -->
   <nav class="navbar">
     <div class="nav-container">
       <div><a href="index.html" class="nav-logo">GoldenHive</a></div>
@@ -790,12 +795,19 @@
         <a href="FAQ.html" class="nav-link">FAQ</a>
         <a href="contact.html" class="nav-link">Contact</a>
       </div>
-      <div class="nav-actions">
-        <a href="login.html" class="btn-solid" style="min-width:85px;">LOGIN</a>
-        <div style="width:1px; height:28px; background:var(--border-color); margin:0 6px;"></div>
-        <button id="rtl-btn" class="rtl-btn">RTL</button>
-        <div id="theme-toggle-desktop" class="theme-toggle-pill"><i class="fas fa-sun"></i><i class="fas fa-moon"></i><div class="thumb"></div></div>
-      </div>
+  <div class="nav-actions">
+  <a href="login.html" class="btn-solid">LOGIN</a>
+
+  <div class="nav-divider"></div>
+
+  <button id="rtl-btn" class="rtl-btn">RTL</button>
+
+  <div id="theme-toggle-desktop" class="theme-toggle-pill">
+    <i class="fas fa-sun"></i>
+    <i class="fas fa-moon"></i>
+    <div class="thumb"></div>
+  </div>
+</div>
       <button id="mobile-btn" class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
     </div>
   </nav>
@@ -806,7 +818,7 @@
       <button id="close-menu" style="background:var(--bg-card); border:1px solid var(--border-color); width:36px; height:36px; border-radius:12px; cursor:pointer;"><i class="fas fa-times"></i></button>
     </div>
     <div style="padding:20px 24px; flex:1; overflow-y:auto;">
-      <a href="index.html" class="mobile-link" >Home Page 1</a>
+      <a href="index.html" class="mobile-link">Home Page 1</a>
       <a href="homepage2.html" class="mobile-link">Home Page 2</a>
       <a href="about.html" class="mobile-link">About</a>
       <a href="service.html" class="mobile-link">Services</a>
@@ -820,13 +832,13 @@
         <span style="font-size:11px; font-weight:bold;">THEME</span>
         <div id="theme-toggle-mobile" class="theme-toggle-pill"><i class="fas fa-sun"></i><i class="fas fa-moon"></i><div class="thumb"></div></div>
         <span style="font-size:11px; font-weight:bold;">LAYOUT</span>
-        <button id="rtl-toggle-mobile" class="rtl-btn" style="padding:5px 12px;"> RTL</button>
+        <button id="rtl-toggle-mobile" class="rtl-btn" style="padding:5px 12px;">RTL</button>
       </div>
       <div style="display:flex; flex-direction:column; gap:14px;"><a href="login.html" class="btn-solid" style="width:100%; text-align:center;">LOGIN</a></div>
     </div>
   </div>
 
-  <!-- ========== BLOG PAGE: HERO + 9 ARTICLES (TIGHTER GAP APPLIED) ========== -->
+  <!-- ========== BLOG PAGE: HERO + 9 ARTICLES ========== -->
   <main class="blog-main">
     <div class="blog-hero">
       <div class="hero-badge-blog"><i class="fas fa-book-open"></i> THE GOLDEN JOURNAL</div>
@@ -836,7 +848,7 @@
 
     <div class="blog-section">
       <div class="topic-header">
-        <h2 style="padding: 30px";><i class="fas fa-seedling"></i> Beekeeping & Honeycraft</h2>
+        <h2><i class="fas fa-seedling"></i> Beekeeping & Honeycraft</h2>
         <p>Explore handpicked articles about sustainable beekeeping, honey benefits, and beeswax magic.</p>
       </div>
 
@@ -988,7 +1000,7 @@
   </footer>
 
   <script>
-    // Mobile menu drawer handling
+    // Mobile menu drawer handling (identical to about.html)
     const mobileBtn = document.getElementById('mobile-btn');
     const fullscreenMenu = document.getElementById('fullscreen-menu');
     const closeMenu = document.getElementById('close-menu');

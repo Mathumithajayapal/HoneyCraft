@@ -1103,7 +1103,45 @@
     gap: 24px;
   }
 }
+.nav-actions {
+  display: none;
+  align-items: center;   /* Vertical alignment */
+  gap: 16px;
+  height: 44px;          /* Same height as controls */
+}
 
+@media (min-width: 1280px) {
+  .nav-actions {
+    display: flex;
+  }
+}
+
+/* Login Button */
+.btn-solid {
+  height: 44px;
+  padding: 0 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+/* RTL Button */
+.rtl-btn {
+  height: 44px;
+  padding: 0 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+/* Theme Toggle */
+.theme-toggle-pill {
+  width: 56px;
+  height: 28px;
+  align-self: center;
+}
 
   </style>
 </head>
@@ -1128,7 +1166,7 @@
       </div>
       <div class="nav-actions">
         <a href="login.html" class="btn-solid" style="min-width:85px;">LOGIN</a>
-        <div style="width:1px; height:28px; background:var(--border-color); margin:0 6px;"></div>
+        <div style="width:1px; height:32px; background:var(--border-color);"></div>
         <button id="rtl-btn" class="rtl-btn"> RTL</button>
         <div id="theme-toggle-desktop" class="theme-toggle-pill"><i class="fas fa-sun"></i><i class="fas fa-moon"></i>
           <div class="thumb"></div>

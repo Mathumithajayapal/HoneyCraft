@@ -809,6 +809,45 @@
     gap: 24px;
   }
 }
+.nav-actions {
+  display: none;
+  align-items: center;   /* Vertical alignment */
+  gap: 16px;
+  height: 44px;          /* Same height as controls */
+}
+
+@media (min-width: 1280px) {
+  .nav-actions {
+    display: flex;
+  }
+}
+
+/* Login Button */
+.btn-solid {
+  height: 44px;
+  padding: 0 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+/* RTL Button */
+.rtl-btn {
+  height: 44px;
+  padding: 0 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+/* Theme Toggle */
+.theme-toggle-pill {
+  width: 56px;
+  height: 28px;
+  align-self: center;
+}
   </style>
 </head>
 <body>
@@ -831,12 +870,19 @@
         <a href="FAQ.html" class="nav-link active">FAQ</a>
         <a href="contact.html" class="nav-link">Contact</a>
       </div>
-      <div class="nav-actions">
-        <a href="login.html" class="btn-solid" style="min-width:85px;">LOGIN</a>
-        <div style="width:1px; height:28px; background:var(--border-color); margin:0 6px;"></div>
-        <button id="rtl-btn" class="rtl-btn">RTL</button>
-        <div id="theme-toggle-desktop" class="theme-toggle-pill"><i class="fas fa-sun"></i><i class="fas fa-moon"></i><div class="thumb"></div></div>
-      </div>
+     <div class="nav-actions">
+  <a href="login.html" class="btn-solid">LOGIN</a>
+
+  <div class="nav-divider"></div>
+
+  <button id="rtl-btn" class="rtl-btn">RTL</button>
+
+  <div id="theme-toggle-desktop" class="theme-toggle-pill">
+    <i class="fas fa-sun"></i>
+    <i class="fas fa-moon"></i>
+    <div class="thumb"></div>
+  </div>
+</div>
       <button id="mobile-btn" class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
     </div>
   </nav>
