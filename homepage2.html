@@ -623,7 +623,7 @@
       margin: 16px 0 8px;
     }
 
-    /* ========== REVIEWS SECTION (new) ========== */
+    /* ========== REVIEWS SECTION ========== */
     .reviews-section {
       padding: 100px 0;
       background: var(--bg-color);
@@ -653,17 +653,14 @@
       gap: 18px;
       margin-bottom: 22px;
     }
-    .review-avatar {
+    /* Profile image style */
+    .review-avatar-img {
       width: 56px;
       height: 56px;
-      background: rgba(252, 135, 13, 0.15);
       border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 30px;
-      color: var(--accent-color);
-      transition: 0.2s;
+      object-fit: cover;
+      border: 2px solid var(--accent-color);
+      background: var(--bg-card);
     }
     .review-info h4 {
       font-size: 1.25rem;
@@ -975,9 +972,9 @@
 }
 .nav-actions {
   display: none;
-  align-items: center;   /* Vertical alignment */
+  align-items: center;
   gap: 16px;
-  height: 44px;          /* Same height as controls */
+  height: 44px;
 }
 
 @media (min-width: 1280px) {
@@ -986,7 +983,6 @@
   }
 }
 
-/* Login Button */
 .btn-solid {
   height: 44px;
   padding: 0 20px;
@@ -996,7 +992,6 @@
   line-height: 1;
 }
 
-/* RTL Button */
 .rtl-btn {
   height: 44px;
   padding: 0 14px;
@@ -1006,7 +1001,6 @@
   line-height: 1;
 }
 
-/* Theme Toggle */
 .theme-toggle-pill {
   width: 56px;
   height: 28px;
@@ -1061,11 +1055,8 @@
     </div>
    <div class="nav-actions">
   <a href="login.html" class="btn-solid">LOGIN</a>
-
   <div class="nav-divider"></div>
-
   <button id="rtl-btn" class="rtl-btn">RTL</button>
-
   <div id="theme-toggle-desktop" class="theme-toggle-pill">
     <i class="fas fa-sun"></i>
     <i class="fas fa-moon"></i>
@@ -1074,7 +1065,7 @@
 </div>
   </div>
 
-  <!-- ========== 7-SECTION HOMEPAGE (including new REVIEWS) ========== -->
+  <!-- ========== 7-SECTION HOMEPAGE ========== -->
   <main class="home-sections">
     <!-- SECTION 1: HERO -->
     <section class="hero-section">
@@ -1146,7 +1137,7 @@
           <div class="gallery-item">
             <img src="image/honeyimage (3).jpg" alt="Beeswax candles in various shapes" loading="lazy">
             <div class="gallery-overlay">
-              <div class="overlay-text"><i class="fas fa-candle"></i>Hand-poured beeswax candles that cleanse the air and bring warm, amber light to every home.</div>
+              <div class="overlay-text"><i class="fas fa-seedling"></i>Hand-poured beeswax candles that cleanse the air and bring warm, amber light to every home.</div>
             </div>
           </div>
           <div class="gallery-item">
@@ -1187,33 +1178,36 @@
       </div>
     </section>
 
-    <!-- SECTION 6: REVIEWS (new) - authentic customer love -->
+    <!-- SECTION 6: REVIEWS - Added Profile Images to all containers -->
     <section class="reviews-section">
       <div class="section-container">
         <h2 class="section-title">Sweet Words from Our Hive</h2>
         <p class="section-sub">Join thousands of honey lovers who’ve made GoldenHive part of their daily ritual.</p>
         <div class="reviews-grid">
+          <!-- Review 1 - Emily R. with profile image -->
           <div class="review-card">
             <div class="review-header">
-              <div class="review-avatar"><i class="fas fa-user-circle"></i></div>
+              <img src="image/avatar1.jpg" alt="Emily R. profile" class="review-avatar-img" onerror="this.src='https://randomuser.me/api/portraits/women/68.jpg'">
               <div class="review-info"><h4>Emily R.</h4><div class="review-role">Verified Buyer · Raw Honey</div></div>
             </div>
             <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
             <div class="review-text">“Absolutely love the raw honey! I can taste the difference compared to store-bought. The texture is incredible and it's become my go-to for teas, baking, and even skincare. GoldenHive is pure magic.”</div>
             <div class="review-icon-quote"><i class="fas fa-quote-right"></i></div>
           </div>
+          <!-- Review 2 - James T. with profile image -->
           <div class="review-card">
             <div class="review-header">
-              <div class="review-avatar"><i class="fas fa-user-circle"></i></div>
+              <img src="image/avatar2.jpg" alt="James T. profile" class="review-avatar-img" onerror="this.src='https://randomuser.me/api/portraits/men/32.jpg'">
               <div class="review-info"><h4>James T.</h4><div class="review-role">Beekeeper & Candle Lover</div></div>
             </div>
             <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
             <div class="review-text">“The beeswax candles are simply magical. They burn evenly with a soft honeyed scent that makes my entire home feel cozy and grounded. I've bought them as gifts for everyone — they always impress.”</div>
             <div class="review-icon-quote"><i class="fas fa-quote-right"></i></div>
           </div>
+          <!-- Review 3 - Priya K. with profile image -->
           <div class="review-card">
             <div class="review-header">
-              <div class="review-avatar"><i class="fas fa-user-circle"></i></div>
+              <img src="image/avatar3.jpg" alt="Priya K. profile" class="review-avatar-img" onerror="this.src='https://randomuser.me/api/portraits/women/45.jpg'">
               <div class="review-info"><h4>Priya K.</h4><div class="review-role">Clean Beauty Advocate</div></div>
             </div>
             <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>

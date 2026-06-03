@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GoldenHive | Artisanal Honey & Apothecary</title>
-      <link rel="icon" type="image/jpeg" href="image\honeyworks (1).jpg">
+      <link rel="icon" type="image/jpeg" href="image/honeyworks (1).jpg">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
@@ -335,11 +335,10 @@
     /* ---------- HOMEPAGE MAIN CONTENT ---------- */
     .home-main {
       flex: 1;
-      /* REMOVED GAP: padding-top set to 0 */
       padding-top: 0;
     }
     
-    /* HERO BANNER - no margin/padding gap from navbar */
+    /* HERO BANNER */
     .hero-honey {
       background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.45)), url('image/honeyimage (2).jpg');
       background-size: cover;
@@ -398,28 +397,45 @@
       letter-spacing: 0.012em;
     }
     
+    /* Section Headers with Orange Accent */
+    .section-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    .section-header .pre-title {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--accent-color);
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    .section-header h2 {
+      font-size: 2.5rem;
+      color: var(--text-main);
+      position: relative;
+      display: inline-block;
+      margin-bottom: 16px;
+    }
+    .section-header .section-underline {
+      width: 70px;
+      height: 3px;
+      background: var(--accent-color);
+      margin: 0 auto;
+      border-radius: 4px;
+    }
+    .section-header p {
+      max-width: 680px;
+      margin: 20px auto 0;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
     /* CARDS SECTION */
     .cards-section {
       max-width: 1280px;
       margin: 80px auto;
       padding: 0 24px;
-    }
-    
-    .section-title {
-      text-align: center;
-      font-size: 2.2rem;
-      margin-bottom: 56px;
-      position: relative;
-    }
-    
-    .section-title:after {
-      content: '';
-      display: block;
-      width: 70px;
-      height: 3px;
-      background: var(--accent-color);
-      margin: 16px auto 0;
-      border-radius: 4px;
     }
     
     .image-card-grid {
@@ -513,6 +529,9 @@
       }
       .hero-honey {
         padding: 100px 20px;
+      }
+      .section-header h2 {
+        font-size: 2rem;
       }
     }
     
@@ -885,7 +904,6 @@
         text-align: center;
         padding-top: 18px;
       }
-      /* Keep home-main padding-top consistent for mobile (no gap) */
       .home-main {
         padding-top: 0;
       }
@@ -929,9 +947,9 @@
 }
 .nav-actions {
   display: none;
-  align-items: center;   /* Vertical alignment */
+  align-items: center;
   gap: 16px;
-  height: 44px;          /* Same height as controls */
+  height: 44px;
 }
 
 @media (min-width: 1280px) {
@@ -940,7 +958,6 @@
   }
 }
 
-/* Login Button */
 .btn-solid {
   height: 44px;
   padding: 0 20px;
@@ -950,7 +967,6 @@
   line-height: 1;
 }
 
-/* RTL Button */
 .rtl-btn {
   height: 44px;
   padding: 0 14px;
@@ -960,7 +976,6 @@
   line-height: 1;
 }
 
-/* Theme Toggle */
 .theme-toggle-pill {
   width: 56px;
   height: 28px;
@@ -990,11 +1005,8 @@
       </div>
    <div class="nav-actions">
   <a href="login.html" class="btn-solid">LOGIN</a>
-
   <div class="nav-divider"></div>
-
   <button id="rtl-btn" class="rtl-btn">RTL</button>
-
   <div id="theme-toggle-desktop" class="theme-toggle-pill">
     <i class="fas fa-sun"></i>
     <i class="fas fa-moon"></i>
@@ -1041,10 +1053,29 @@
         <a href="#" class="btn-solid" style="padding:12px 32px; font-size:1rem;">Explore Collection →</a>
       </div>
     </section>
+        <div style="text-align: center; margin-top: 20px;">
+      <div class="section-header">
+        <div class="pre-title">OUR IMPACT</div>
+        <h2>By the Numbers</h2>
+        <div class="section-underline"></div>
+        <p>Celebrating the collective power of ethical beekeeping and environmental care</p>
+      </div>
+    </div>
+    <div class="bee-fact-grid">
+      <div class="fact-item"><div class="fact-number">500+</div><p>Bee colonies supported</p></div>
+      <div class="fact-item"><div class="fact-number">12k</div><p>Acres of pollinator habitat</p></div>
+      <div class="fact-item"><div class="fact-number">30+</div><p>Artisan varieties</p></div>
+      <div class="fact-item"><div class="fact-number">Zero</div><p>Heat processing</p></div>
+    </div>
 
-    <!-- 4 CARDS WITH IMAGES -->
+    <!-- 4 CARDS WITH IMAGES - Orange Heading Added -->
     <div class="cards-section">
-      <h2 class="section-title">Our Signature Honey Collection</h2>
+      <div class="section-header">
+        <div class="pre-title">ARTISAN SELECTION</div>
+        <h2>Our Signature Honey Collection</h2>
+        <div class="section-underline"></div>
+        <p>Discover the richness of raw, unprocessed honey from our sustainable apiaries</p>
+      </div>
       <div class="image-card-grid">
         <div class="image-card">
           <img class="card-img" src="image/honeyimage (5).jpg" alt="Wildflower Honey Jar">
@@ -1081,11 +1112,12 @@
       </div>
     </div>
 
-    <!-- Feature Section -->
+    <!-- Feature Section - Orange Heading Added -->
     <div class="feature-section">
       <div class="feature-inner">
         <div class="feature-text">
-          <h2>Where bees thrive, honey comes alive</h2>
+          <div class="pre-title" style="color: var(--accent-color); font-size:0.85rem; letter-spacing:2px; margin-bottom:12px;">SUSTAINABLE CRAFT</div>
+          <h2>Pure Honey, Pure Happiness</h2>
           <p>Our beekeepers prioritize hive health, biodiversity, and chemical-free practices.</p>
           <ul class="feature-list">
             <li><i class="fas fa-check-circle"></i> Chemical-free apiaries</li>
@@ -1099,16 +1131,16 @@
       </div>
     </div>
 
-    <!-- Stats Grid -->
-    <div class="bee-fact-grid">
-      <div class="fact-item"><div class="fact-number">500+</div><p>Bee colonies supported</p></div>
-      <div class="fact-item"><div class="fact-number">12k</div><p>Acres of pollinator habitat</p></div>
-      <div class="fact-item"><div class="fact-number">30+</div><p>Artisan varieties</p></div>
-      <div class="fact-item"><div class="fact-number">Zero</div><p>Heat processing</p></div>
-    </div>
+    <!-- Stats Grid - Orange Heading Added -->
 
-    <!-- Testimonial -->
+
+    <!-- Testimonial - Orange Heading Added -->
     <div class="testimonial-slider">
+      <div class="section-header">
+        <div class="pre-title">HONEY TESTIMONIALS</div>
+        <h2>What People Are Saying</h2>
+        <div class="section-underline"></div>
+      </div>
       <div class="testimonial-card">
         <i class="fas fa-quote-left" style="font-size: 2rem; color: var(--accent-color); opacity: 0.6;"></i>
         <p class="testimonial-text">"GoldenHive's wildflower honey is unlike any other — aromatic, complex, and deeply flavorful."</p>
@@ -1124,10 +1156,15 @@
     </div>
   </main>
 
-  <!-- REVIEW SECTION -->
+  <!-- REVIEW SECTION - Orange Heading Added -->
   <section class="review-section">
     <div>
-      <h2 class="section-title">What Our Customers Say</h2>
+      <div class="section-header">
+        <div class="pre-title">CUSTOMER LOVE</div>
+        <h2>What Our Customers Say</h2>
+        <div class="section-underline"></div>
+        <p>Thousands of happy honey lovers trust GoldenHive for purity and taste</p>
+      </div>
       <div class="review-grid">
         <div class="review-card">
           <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
@@ -1194,7 +1231,6 @@
             <a href="#">Shipping</a>
             <a href="#">Returns</a>
             <a href="#">Privacy Policy</a>
-          
           </div>
         </div>
       </div>

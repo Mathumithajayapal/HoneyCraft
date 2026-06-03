@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
   <title>GoldenHive | Login – Artisanal Honey & Beeswax</title>
-      <link rel="icon" type="image/jpeg" href="image\honeyworks (1).jpg">
+      <link rel="icon" type="image/jpeg" href="image/honeyworks (1).jpg">
 
   <!-- EXACT FONTS: Playfair Display + Poppins -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -199,17 +199,10 @@
       align-items: center;
     }
 
-    .input-icon {
-      position: absolute;
-      left: 16px;
-      color: #FC870D;
-      font-size: 0.95rem;
-      pointer-events: none;
-    }
-
+    /* Removed inner input-icon styles - icons only in labels now */
     .input-field {
       width: 100%;
-      padding: 12px 16px 12px 44px;
+      padding: 12px 16px;
       border: 2px solid var(--border-light);
       border-radius: 60px;
       font-size: 0.95rem;
@@ -472,13 +465,6 @@
     .error-message.show { display: flex; gap: 8px; align-items: center; }
 
     /* RTL Overrides */
-    body[dir="rtl"] .input-icon {
-      left: auto;
-      right: 16px;
-    }
-    body[dir="rtl"] .input-field {
-      padding: 12px 44px 12px 16px;
-    }
     body[dir="rtl"] .password-toggle {
       right: auto;
       left: 18px;
@@ -507,7 +493,7 @@
       .login-card { padding: 24px 22px; }
       .logo-text { font-size: 1.6rem; }
       .card-title h1 { font-size: 1.4rem; }
-      .input-field { padding: 11px 14px 11px 42px; }
+      .input-field { padding: 11px 16px; }
     }
 
     @media (max-width: 440px) {
@@ -526,7 +512,7 @@
       .logo-text { font-size: 1.35rem; }
       .logo-tagline { font-size: 0.6rem; }
       .card-title h1 { font-size: 1.2rem; }
-      .input-field { font-size: 0.85rem; padding: 10px 12px 10px 38px; }
+      .input-field { font-size: 0.85rem; padding: 10px 14px; }
       .social-btn span { display: none; }
       .social-btn { padding: 9px; }
       .social-btn i { font-size: 1.1rem; }
@@ -554,7 +540,7 @@
       .logo-tagline { font-size: 0.55rem; padding: 2px 10px; }
       .card-title h1 { font-size: 1.1rem; }
       .card-title p { font-size: 0.7rem; }
-      .input-field { padding: 8px 12px 8px 38px; font-size: 0.8rem; }
+      .input-field { padding: 8px 14px; font-size: 0.8rem; }
       .login-btn { padding: 8px; font-size: 0.85rem; }
     }
 
@@ -643,7 +629,6 @@
       <div class="form-group">
         <label class="input-label"><i class="fas fa-envelope"></i> Email Address</label>
         <div class="input-wrapper">
-          <i class="fas fa-envelope input-icon"></i>
           <input type="email" id="emailInput" class="input-field" placeholder="hello@goldenhive.com" required>
         </div>
       </div>
@@ -651,7 +636,6 @@
       <div class="form-group">
         <label class="input-label"><i class="fas fa-lock"></i> Password</label>
         <div class="input-wrapper">
-          <i class="fas fa-key input-icon"></i>
           <input type="password" id="passwordInput" class="input-field" placeholder="••••••••" required>
           <button type="button" class="password-toggle" id="togglePassword">
             <i class="far fa-eye-slash"></i>

@@ -482,11 +482,34 @@
     .info-card h3 {
       font-size: 1.4rem;
       margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
     }
-    .info-card p {
+    /* New style for icon wrapper below image - icon moved below profile picture */
+    .info-icon-wrapper {
+      margin: 12px 0 8px;
+    }
+    .info-icon-wrapper i {
+      font-size: 1.5rem;
+      color: var(--accent-color);
+      background: rgba(252,135,13,0.1);
+      width: 44px;
+      height: 44px;
+      line-height: 44px;
+      border-radius: 40px;
+      display: inline-block;
+    }
+    .info-card p, .info-card small {
       line-height: 1.7;
       letter-spacing: 0.01em;
       color: var(--text-muted);
+    }
+    .info-card small {
+      display: block;
+      margin-top: 8px;
+      font-weight: 500;
     }
 
     .form-row {
@@ -846,9 +869,9 @@
 }
 .nav-actions {
   display: none;
-  align-items: center;   /* Vertical alignment */
+  align-items: center;
   gap: 16px;
-  height: 44px;          /* Same height as controls */
+  height: 44px;
 }
 
 @media (min-width: 1280px) {
@@ -857,7 +880,6 @@
   }
 }
 
-/* Login Button */
 .btn-solid {
   height: 44px;
   padding: 0 20px;
@@ -867,7 +889,6 @@
   line-height: 1;
 }
 
-/* RTL Button */
 .rtl-btn {
   height: 44px;
   padding: 0 14px;
@@ -877,7 +898,6 @@
   line-height: 1;
 }
 
-/* Theme Toggle */
 .theme-toggle-pill {
   width: 56px;
   height: 28px;
@@ -907,11 +927,8 @@
       </div>
     <div class="nav-actions">
   <a href="login.html" class="btn-solid">LOGIN</a>
-
   <div class="nav-divider"></div>
-
   <button id="rtl-btn" class="rtl-btn">RTL</button>
-
   <div id="theme-toggle-desktop" class="theme-toggle-pill">
     <i class="fas fa-sun"></i>
     <i class="fas fa-moon"></i>
@@ -950,7 +967,7 @@
 
   <!-- ========== 5-SECTION CONTACT PAGE ========== -->
   <div class="contact-page-wrapper">
-    <!-- SECTION 1: INDEX HERO BANNER (copied exactly, no gap) -->
+    <!-- SECTION 1: INDEX HERO BANNER -->
     <section>
       <div class="hero-honey">
         <div class="hero-content">
@@ -963,7 +980,7 @@
       </div>
     </section>
 
-    <!-- SECTION 2: Contact info cards -->
+    <!-- SECTION 2: Contact info cards - ICONS MOVED BELOW PROFILE PICTURES -->
     <section>
       <div class="contact-container">
         <h2 class="section-title">Our apiary heartbeat</h2>
@@ -971,19 +988,22 @@
         <div class="info-grid">
           <div class="info-card">
             <img src="image/honeyworks (3).jpg" alt="Beekeeper portrait">
-            <h3><i class="fas fa-map-pin"></i> Visit farm</h3>
+            <div class="info-icon-wrapper"><i class="fas fa-map-pin"></i></div>
+            <h3>Visit farm</h3>
             <p>123 Golden Meadow, Sonoma County, CA</p>
             <small>Open Mon-Sat 9am–5pm</small>
           </div>
           <div class="info-card">
             <img src="image/image1 (1).jpg" alt="Honey jar">
-            <h3><i class="fas fa-phone"></i> Hive line</h3>
+            <div class="info-icon-wrapper"><i class="fas fa-phone"></i></div>
+            <h3>Hive line</h3>
             <p>+1 (888) 555-HIVE</p>
             <p><i class="fab fa-whatsapp"></i> +1 (707) 234 5678</p>
           </div>
           <div class="info-card">
             <img src="image/image1 (2).jpg" alt="Bee on flower">
-            <h3><i class="fas fa-envelope"></i> Buzz mail</h3>
+            <div class="info-icon-wrapper"><i class="fas fa-envelope"></i></div>
+            <h3>Buzz mail</h3>
             <p>hello@goldenhive.com</p>
             <p>support@goldenhive.com</p>
           </div>
