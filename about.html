@@ -499,7 +499,7 @@
       }
     }
 
-    /* ========== MISSION & VISION SECTION ========== */
+    /* ========== MISSION & VISION SECTION - ICON SIZE REDUCED ========== */
     .mission-vision-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -524,8 +524,9 @@
       box-shadow: 0 28px 36px -16px rgba(252, 135, 13, 0.25);
     }
 
+    /* Icon size reduced from 3rem to 2.2rem for better balance */
     .mv-icon {
-      font-size: 3rem;
+      font-size: 2.2rem;
       background: linear-gradient(135deg, var(--accent-color), #F7B05E);
       -webkit-background-clip: text;
       background-clip: text;
@@ -562,6 +563,9 @@
       }
       .mission-vision-card h3 {
         font-size: 1.8rem;
+      }
+      .mv-icon {
+        font-size: 2rem;
       }
     }
 
@@ -1142,6 +1146,19 @@
   height: 28px;
   align-self: center;
 }
+.split-image img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 20px;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .split-image img {
+    height: 300px;
+  }
+}
 
   </style>
 </head>
@@ -1222,7 +1239,6 @@
       <!-- OUR STORY section (image first on mobile) -->
       <section class="about-section">
         <div class="split-layout">
-          <!-- Image placed BEFORE text in DOM, but on desktop order:2 makes it right. On mobile order:1 forces image first -->
           <div class="split-image">
             <img src="image/honeyimage (4).jpg" alt="Beekeeper inspecting golden honeycomb">
           </div>
@@ -1235,19 +1251,19 @@
         </div>
       </section>
 
-      <!-- MISSION & VISION SECTION -->
+      <!-- MISSION & VISION SECTION (ICON SIZE REDUCED FOR BETTER BALANCE) -->
       <section class="about-section">
         <div style="text-align: center; margin-bottom: 16px;">
           <span class="section-title" style="display: inline-block;">Mission & Vision</span>
         </div>
         <div class="mission-vision-grid">
           <div class="mission-vision-card">
-            <div class="mv-icon"><i class="fas fa-seedling fa-3x"></i></div>
+            <div class="mv-icon"><i class="fas fa-seedling fa-2x"></i></div>
             <h3>Our Mission</h3>
             <p>To nurture thriving pollinator ecosystems by practicing ethical, transparent beekeeping — delivering raw, unprocessed honey that preserves nature's purity while empowering local communities with regenerative agriculture education.</p>
           </div>
           <div class="mission-vision-card">
-            <div class="mv-icon"><i class="fas fa-globe-americas fa-3x"></i></div>
+            <div class="mv-icon"><i class="fas fa-globe-americas fa-2x"></i></div>
             <h3>Our Vision</h3>
             <p>A future where every harvest strengthens the bond between people and pollinators, creating a global network of carbon-negative apiaries, thriving wildflower corridors, and a world where honey tells the story of ecological harmony.</p>
           </div>
@@ -1269,17 +1285,7 @@
         </div>
       </section>
 
-      <!-- CORE VALUES -->
-      <section class="about-section">
-        <div style="text-align: center; margin-bottom: 24px;">
-          <span class="section-title" style="display: inline-block;">Our Core Values</span>
-        </div>
-        <div class="values-grid">
-          <div class="value-card"><img src="image/bees factory.jpg" alt="Sustainable beekeeping"><h3>Sustainability</h3><p>Regenerative practices, pesticide-free zones, and habitat restoration for thriving pollinator populations.</p></div>
-          <div class="value-card"><img src="image/honey products.jpg" alt="Pure raw honey"><h3>Pure Purity</h3><p>Never heated, never filtered — our honey retains all natural enzymes, pollen, and health benefits.</p></div>
-          <div class="value-card"><img src="image/honeydriper (1).jpg" alt="Community care"><h3>Community First</h3><p>Supporting local beekeepers, education programs, and donating 5% of profits to pollinator protection.</p></div>
-        </div>
-      </section>
+    
 
       <!-- TEAM -->
       <section class="about-section">

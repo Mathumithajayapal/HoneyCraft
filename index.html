@@ -431,6 +431,61 @@
       line-height: 1.7;
     }
 
+    /* WHY CHOOSE US SECTION - NEW */
+    .why-choose-section {
+      padding: 80px 24px;
+      background: var(--bg-color);
+    }
+    .why-choose-container {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 40px;
+      margin-top: 20px;
+    }
+    .benefit-card {
+      text-align: center;
+      padding: 32px 24px;
+      background: var(--bg-card);
+      border-radius: 28px;
+      border: 1px solid var(--border-color);
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+    }
+    .benefit-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--accent-color);
+      box-shadow: 0 20px 35px rgba(252, 135, 13, 0.12);
+    }
+    .benefit-icon {
+      width: 80px;
+      height: 80px;
+      background: rgba(252, 135, 13, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+    .benefit-icon i {
+      font-size: 2.5rem;
+      color: var(--accent-color);
+    }
+    .benefit-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 12px;
+      font-family: 'Playfair Display', serif;
+      color: var(--text-main);
+    }
+    .benefit-card p {
+      color: var(--text-muted);
+      line-height: 1.7;
+      font-size: 0.95rem;
+    }
+
     /* CARDS SECTION */
     .cards-section {
       max-width: 1280px;
@@ -587,7 +642,7 @@
       transform: scale(1.03);
     }
     
-    /* FACT GRID */
+    /* FACT GRID - MOVED TO MIDDLE, STYLES UNCHANGED */
     .bee-fact-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -907,6 +962,12 @@
       .home-main {
         padding-top: 0;
       }
+      .benefits-grid {
+        gap: 24px;
+      }
+      .benefit-card {
+        padding: 24px 20px;
+      }
     }
       @media (max-width: 992px) {
       .footer-top {
@@ -1053,7 +1114,43 @@
         <a href="#" class="btn-solid" style="padding:12px 32px; font-size:1rem;">Explore Collection →</a>
       </div>
     </section>
-        <div style="text-align: center; margin-top: 20px;">
+
+    <!-- NEW SECTION: Why Choose GoldenHive -->
+    <section class="why-choose-section">
+      <div class="why-choose-container">
+        <div class="section-header">
+          <div class="pre-title">WHY GOLDENHIVE</div>
+          <h2>Pure. Ethical. Unforgettable.</h2>
+          <div class="section-underline"></div>
+          <p>Experience the difference of truly artisanal honey crafted with care for you and the planet</p>
+        </div>
+        <div class="benefits-grid">
+          <div class="benefit-card">
+            <div class="benefit-icon"><i class="fas fa-seedling"></i></div>
+            <h3>100% Raw & Unfiltered</h3>
+            <p>Never heated or ultra-filtered. Every jar preserves natural enzymes, pollen, and antioxidants for maximum health benefits.</p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon"><i class="fas fa-bee"></i></div>
+            <h3>Bee-Friendly Practices</h3>
+            <p>We never take more than the bees can spare. Our hives thrive in chemical-free environments with diverse forage.</p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon"><i class="fas fa-hand-holding-heart"></i></div>
+            <h3>Traceable Origins</h3>
+            <p>Every batch is traceable to our partner apiaries. Know exactly where your honey comes from and who made it.</p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon"><i class="fas fa-leaf"></i></div>
+            <h3>Plastic-Neutral Packaging</h3>
+            <p>Glass jars, recycled paper, and compostable wraps. We're committed to reducing waste at every step.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- IMPACT SECTION - MOVED TO MIDDLE (repositioned here) -->
+    <div style="text-align: center; margin-top: 20px;">
       <div class="section-header">
         <div class="pre-title">OUR IMPACT</div>
         <h2>By the Numbers</h2>
@@ -1131,9 +1228,6 @@
       </div>
     </div>
 
-    <!-- Stats Grid - Orange Heading Added -->
-
-
     <!-- Testimonial - Orange Heading Added -->
     <div class="testimonial-slider">
       <div class="section-header">
@@ -1147,16 +1241,7 @@
         <div style="font-weight: 700;">— Elena Marchetti, Chef & Beekeeper</div>
       </div>
     </div>
-
-    <!-- CTA Section -->
-    <div class="cta-section">
-      <h2>Join the hive & taste the difference</h2>
-      <p>Subscribe for seasonal releases, raw honey tips, and 10% off your first order.</p>
-      <a href="#" class="cta-btn">Get Sweet Updates →</a>
-    </div>
-  </main>
-
-  <!-- REVIEW SECTION - Orange Heading Added -->
+     <!-- REVIEW SECTION - Orange Heading Added -->
   <section class="review-section">
     <div>
       <div class="section-header">
@@ -1194,6 +1279,16 @@
     </div>
   </section>
 
+
+    <!-- CTA Section -->
+    <div class="cta-section">
+      <h2>Join the hive & taste the difference</h2>
+      <p>Subscribe for seasonal releases, raw honey tips, and 10% off your first order.</p>
+      <a href="#" class="cta-btn">Get Sweet Updates →</a>
+    </div>
+  </main>
+
+ 
   <!-- COMPACT FOOTER -->
   <footer class="modern-footer">
     <div class="footer-wrapper">
