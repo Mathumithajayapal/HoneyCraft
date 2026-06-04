@@ -788,6 +788,50 @@
       .footer-links-grid { grid-template-columns: 1fr; gap: 24px; }
       .footer-bottom { flex-direction: column; text-align: center; gap: 12px; }
     }
+    
+/* Login Button */
+.btn-solid {
+  width: 90px;
+  height: 30px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 40px;
+}
+
+/* RTL Button */
+.rtl-btn {
+  width: 90px;
+  height: 30px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 40px;
+}
+
+/* Dark / Light Toggle */
+.theme-toggle-pill {
+   width: 90px;
+  height: 30px;
+  padding: 0 12px;
+  border-radius: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.theme-toggle-pill .thumb {
+  width: 20px;
+  height: 20px;
+  top: 3px;
+  left: 9px;
+}
+
+body.dark-mode .theme-toggle-pill .thumb {
+  transform: translateX(54px);
+}
   </style>
 </head>
 <body>
@@ -811,7 +855,6 @@
       </div>
       <div class="nav-actions">
         <a href="login.html" class="btn-solid">LOGIN</a>
-        <div style="width:1px; height:32px; background:var(--border-color);"></div>
         <button id="rtl-btn" class="rtl-btn">RTL</button>
         <div id="theme-toggle-desktop" class="theme-toggle-pill"><i class="fas fa-sun"></i><i class="fas fa-moon"></i><div class="thumb"></div></div>
       </div>
