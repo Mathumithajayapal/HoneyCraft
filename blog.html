@@ -404,15 +404,17 @@
       }
     }
 
-    /* ---------- BLOG GRID SECTION ---------- */
-    .blog-section {
+    /* ========== FIXED: BLOG SECTION WITH PROPER PADDING ========== */
+    .blog-section-wrapper {
       max-width: 1280px;
       margin: 0 auto;
       padding: 0 24px 80px;
     }
+    
     .topic-header {
       text-align: center;
       margin-bottom: 48px;
+      padding-top: 30px;
     }
     .topic-header h2 {
       font-size: 2.4rem;
@@ -727,54 +729,49 @@
       .blog-main {
         padding-top: 0;
       }
-    }
-    @media (max-width: 992px) {
-      .footer-links-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 24px;
+      .blog-section-wrapper {
+        padding: 0 20px 60px;
       }
     }
+    
+    /* Nav actions alignment fix */
     .nav-actions {
-  display: none;
-  align-items: center;   /* Vertical alignment */
-  gap: 16px;
-  height: 44px;          /* Same height as controls */
-}
+      display: none;
+      align-items: center;
+      gap: 16px;
+      height: 44px;
+    }
 
-@media (min-width: 1280px) {
-  .nav-actions {
-    display: flex;
-  }
-}
+    @media (min-width: 1280px) {
+      .nav-actions {
+        display: flex;
+      }
+    }
 
-/* Login Button */
-.btn-solid {
-  height: 44px;
-  padding: 0 20px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  line-height: 1;
-}
+    .btn-solid {
+      height: 44px;
+      padding: 0 20px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
 
-/* RTL Button */
-.rtl-btn {
-  height: 44px;
-  padding: 0 14px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  line-height: 1;
-}
+    .rtl-btn {
+      height: 44px;
+      padding: 0 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
 
-/* Theme Toggle */
-.theme-toggle-pill {
-  width: 56px;
-  height: 28px;
-  align-self: center;
-}
-
-/* Login Button */
+    .theme-toggle-pill {
+      width: 56px;
+      height: 28px;
+      align-self: center;
+    }
+    /* Login Button */
 .btn-solid {
   width: 90px;
   height: 30px;
@@ -827,7 +824,7 @@ body.dark-mode .theme-toggle-pill .thumb {
       <div><a href="index.html" class="nav-logo">GoldenHive</a></div>
       <div class="nav-links">
         <div class="dropdown">
-          <span class="nav-link">Home <i class="fas fa-chevron-down text-[10px] ms-1"></i></span>
+          <span class="nav-link">Home <i class="fas fa-chevron-down"></i></span>
           <div class="dropdown-menu">
             <div class="dropdown-inner"><a href="index.html" class="dropdown-item">Home Page 1</a><a href="homepage2.html" class="dropdown-item">Home Page 2</a></div>
           </div>
@@ -839,19 +836,16 @@ body.dark-mode .theme-toggle-pill .thumb {
         <a href="FAQ.html" class="nav-link">FAQ</a>
         <a href="contact.html" class="nav-link">Contact</a>
       </div>
-  <div class="nav-actions">
-  <a href="login.html" class="btn-solid">LOGIN</a>
-
-  <div class="nav-divider"></div>
-
-  <button id="rtl-btn" class="rtl-btn">RTL</button>
-
-  <div id="theme-toggle-desktop" class="theme-toggle-pill">
-    <i class="fas fa-sun"></i>
-    <i class="fas fa-moon"></i>
-    <div class="thumb"></div>
-  </div>
-</div>
+      <div class="nav-actions">
+        <a href="login.html" class="btn-solid">LOGIN</a>
+        <div class="nav-divider"></div>
+        <button id="rtl-btn" class="rtl-btn">RTL</button>
+        <div id="theme-toggle-desktop" class="theme-toggle-pill">
+          <i class="fas fa-sun"></i>
+          <i class="fas fa-moon"></i>
+          <div class="thumb"></div>
+        </div>
+      </div>
       <button id="mobile-btn" class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
     </div>
   </nav>
@@ -882,19 +876,19 @@ body.dark-mode .theme-toggle-pill .thumb {
     </div>
   </div>
 
-  <!-- ========== BLOG PAGE: HERO + 9 ARTICLES ========== -->
+  <!-- ========== BLOG PAGE: HERO + 9 ARTICLES (FIXED SPACING) ========== -->
   <main class="blog-main">
     <div class="blog-hero">
       <h1 class="hero-title">Stories from the Hive</h1>
       <p class="hero-sub">Raw wisdom, beekeeping secrets & artisanal recipes straight from GoldenHive apiaries.</p>
     </div>
 
- <div class="blog-section" style="margin-top: 50px; padding-top: 30px;">
-  <div class="topic-header">
-    <h2><i class="fas fa-seedling"></i> Beekeeping & Honeycraft</h2>
-    <p>Explore handpicked articles about sustainable beekeeping, honey benefits, and beeswax magic.</p>
-  </div>
-</div>
+    <!-- Fixed wrapper with proper padding to prevent touching screen edges -->
+    <div class="blog-section-wrapper">
+      <div class="topic-header">
+        <h2><i class="fas fa-seedling"></i> Beekeeping & Honeycraft</h2>
+        <p>Explore handpicked articles about sustainable beekeeping, honey benefits, and beeswax magic.</p>
+      </div>
 
       <div class="blog-grid">
         <!-- CARD 1 -->
