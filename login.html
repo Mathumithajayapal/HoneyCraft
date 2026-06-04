@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-  <title>GoldenHive | Login – Artisanal Honey & Beeswax</title>
-      <link rel="icon" type="image/jpeg" href="image/honeyworks (1).jpg">
+  <title>GoldenHive | Sign In – Artisanal Honey & Beeswax</title>
+  <link rel="icon" type="image/jpeg" href="image/honeyworks (1).jpg">
 
-  <!-- EXACT FONTS: Playfair Display + Poppins -->
+  <!-- Google Fonts: Playfair Display + Poppins -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
   <style>
     * {
       margin: 0;
@@ -32,20 +33,30 @@
       --error-color: #e74c3c;
       --font-heading: 'Playfair Display', serif;
       --font-body: 'Poppins', sans-serif;
+      
+      /* 🔥 INPUT STYLE — matches signup page height (padding: 9px 14px)
+         Left icon REMOVED → left padding set to 16px (original signup style)
+         Right padding remains 48px for eye toggle (password field) and consistent width */
+      --input-padding-top: 9px;
+      --input-padding-bottom: 9px;
+      --input-padding-left: 16px;      /* clean, icon-free left spacing */
+      --input-padding-right: 48px;      /* preserves room for password toggle (eye) */
+      --input-font-size: 0.85rem;
+      --input-radius: 60px;
     }
 
-    /* DARK MODE: Card background becomes pure BLACK, body also black for immersive deep look */
+    /* DARK MODE: pure black card + body for immersive apothecary feel */
     body.dark {
       --bg-gradient-start: #000000;
       --bg-gradient-end: #000000;
       --text-primary: #f5f0eb;
       --text-secondary: #c0b0a0;
-      --card-bg: #000000;            /* ✅ pure black card */
+      --card-bg: #000000;
       --accent-color: #FC9F2E;
       --accent-hover: #FDAE4C;
       --accent-light: #2a2a1a;
       --border-light: #2a2a2a;
-      --input-bg: #111111;           /* subtle dark input for readability */
+      --input-bg: #111111;
       --shadow-md: 0 20px 35px -8px rgba(0, 0, 0, 0.6);
     }
 
@@ -64,16 +75,15 @@
     }
 
     body.dark {
-      background: #000000;           /* body background also black for seamless integration */
+      background: #000000;
     }
 
-    /* Login Container - perfectly centered */
+    /* Login container - centered, smooth */
     .login-container {
-      max-width: 460px;
+      max-width: 480px;
       width: 100%;
       margin: 0 auto;
       animation: fadeInUp 0.5s ease-out;
-      height: auto;
     }
 
     @keyframes fadeInUp {
@@ -81,24 +91,22 @@
       to { opacity: 1; transform: translateY(0);}
     }
 
-    /* Login Card – now adapts to pure black in dark mode */
+    /* Login Card – refined border */
     .login-card {
       background: var(--card-bg);
-      backdrop-filter: blur(0px);
       border-radius: 36px;
-      padding: 28px 32px;
+      padding: 32px 34px;
       box-shadow: var(--shadow-md);
       border: 1px solid rgba(252, 135, 13, 0.25);
       transition: all 0.3s ease;
     }
 
-    /* In dark mode, give a subtle golden edge to the card */
     body.dark .login-card {
       border: 1px solid rgba(252, 159, 46, 0.35);
       box-shadow: 0 20px 35px -8px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(252, 159, 46, 0.1);
     }
 
-    /* Logo Section - GoldenHive Styling */
+    /* Logo Section */
     .logo-section {
       text-align: center;
       margin-bottom: 24px;
@@ -110,10 +118,11 @@
       justify-content: center;
       gap: 10px;
       margin-bottom: 8px;
+      cursor: pointer;
     }
 
     .logo-icon {
-      font-size: 2.4rem;
+      font-size: 2.5rem;
       filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
       color: #FC870D;
       animation: float 3s ease-in-out infinite;
@@ -125,7 +134,7 @@
     }
 
     .logo-text {
-      font-size: 1.9rem;
+      font-size: 2rem;
       font-weight: 800;
       background: linear-gradient(45deg, #FC870D, #FC9F2E);
       -webkit-background-clip: text;
@@ -150,18 +159,17 @@
       display: inline-block;
       padding: 5px 14px;
       border-radius: 40px;
-      font-family: var(--font-body);
       font-weight: 500;
     }
 
     /* Card Title */
     .card-title {
       text-align: center;
-      margin-bottom: 24px;
+      margin-bottom: 28px;
     }
 
     .card-title h1 {
-      font-size: 1.6rem;
+      font-size: 1.7rem;
       font-weight: 700;
       font-family: var(--font-heading);
       color: var(--text-primary);
@@ -171,11 +179,15 @@
     .card-title p {
       font-size: 0.85rem;
       color: var(--text-secondary);
-      font-family: var(--font-body);
     }
 
+    /* ========== EXACT INPUT HEIGHT & STRUCTURE (same as signup, ICON-FREE LEFT SIDE) ==========
+       All decorative left icons removed. Left padding matches original signup (16px). 
+       Right padding keeps space for password toggle. Email field gets same padding for consistency.
+       Height remains identical to signup (derived from padding + font + line-height).
+    */
     .form-group {
-      margin-bottom: 18px;
+      margin-bottom: 22px;
     }
 
     .input-label {
@@ -195,22 +207,24 @@
 
     .input-wrapper {
       position: relative;
-      display: flex;
-      align-items: center;
+      width: 100%;
     }
 
-    /* Removed inner input-icon styles - icons only in labels now */
+    /* THE EXACT INPUT — matches signup height, no left-side decorative icon, only functional toggle */
     .input-field {
       width: 100%;
-      padding: 12px 16px;
-      border: 2px solid var(--border-light);
-      border-radius: 60px;
-      font-size: 0.95rem;
+      padding: var(--input-padding-top) var(--input-padding-right) var(--input-padding-bottom) var(--input-padding-left);
+      font-size: var(--input-font-size);
       font-family: var(--font-body);
+      font-weight: 500;
+      border: 2px solid var(--border-light);
+      border-radius: var(--input-radius);
       background: var(--input-bg);
       color: var(--text-primary);
-      transition: all 0.2s;
+      transition: all 0.2s cubic-bezier(0.2, 0.8, 0.4, 1);
       outline: none;
+      line-height: 1.35;
+      letter-spacing: -0.2px;
     }
 
     .input-field:focus {
@@ -218,37 +232,48 @@
       box-shadow: 0 0 0 3px rgba(252, 135, 13, 0.2);
     }
 
-    /* Dark mode input field refinement */
     body.dark .input-field {
       border-color: #3a3a3a;
       background: #0c0c0c;
     }
+
     body.dark .input-field:focus {
       border-color: #FC9F2E;
       box-shadow: 0 0 0 3px rgba(252, 159, 46, 0.3);
     }
 
+    /* password toggle button — functional, remains on the right (left in RTL) */
     .password-toggle {
       position: absolute;
       right: 18px;
+      top: 50%;
+      transform: translateY(-50%);
       background: transparent;
       border: none;
       cursor: pointer;
       color: var(--text-secondary);
       font-size: 1rem;
       transition: color 0.2s;
-      padding: 6px;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
     }
 
     .password-toggle:hover {
       color: #FC870D;
+      background: rgba(252, 135, 13, 0.1);
     }
 
+    /* Options row (remember + forgot) */
     .options-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 24px;
+      margin-bottom: 28px;
       font-size: 0.8rem;
     }
 
@@ -273,7 +298,6 @@
       text-decoration: none;
       font-weight: 500;
       transition: color 0.2s;
-      font-family: var(--font-body);
     }
 
     .forgot-link:hover {
@@ -281,23 +305,25 @@
       text-decoration: underline;
     }
 
+    /* Primary login button */
     .login-btn {
       width: 100%;
       background: #FC870D;
       border: none;
-      padding: 12px;
+      padding: 0;
+      height: 52px;
       border-radius: 60px;
       font-weight: 700;
       font-size: 1rem;
       color: white;
       cursor: pointer;
-      transition: all 0.2s;
+      transition: all 0.2s ease;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
       font-family: var(--font-body);
-      margin-bottom: 20px;
+      margin-bottom: 22px;
     }
 
     .login-btn:hover {
@@ -310,10 +336,9 @@
       display: flex;
       align-items: center;
       text-align: center;
-      margin: 18px 0;
+      margin: 20px 0;
       color: var(--text-secondary);
       font-size: 0.75rem;
-      font-family: var(--font-body);
     }
 
     .divider::before,
@@ -331,7 +356,7 @@
       display: flex;
       gap: 14px;
       justify-content: center;
-      margin-bottom: 20px;
+      margin-bottom: 22px;
     }
 
     .social-btn {
@@ -339,7 +364,8 @@
       background: transparent;
       border: 2px solid var(--border-light);
       border-radius: 60px;
-      padding: 10px;
+      padding: 0;
+      height: 48px;
       font-size: 0.85rem;
       cursor: pointer;
       transition: all 0.2s;
@@ -358,16 +384,15 @@
       transform: translateY(-2px);
     }
 
-    .social-btn i { font-size: 1rem; }
+    .social-btn i { font-size: 1.1rem; }
     .social-btn.google i { color: #db4437; }
-    .social-btn.apple i { color: #000000; }
-    body.dark .social-btn.apple i { color: #ffffff; }
+    .social-btn.apple i { color: #000; }
+    body.dark .social-btn.apple i { color: #fff; }
 
     .register-link {
       text-align: center;
       font-size: 0.8rem;
       color: var(--text-secondary);
-      font-family: var(--font-body);
     }
 
     .register-link a {
@@ -376,25 +401,34 @@
       font-weight: 600;
     }
 
-    /* Top-Right Controls */
-    .top-controls {
-      position: fixed;
-      top: 16px;
-      right: 20px;
-      display: flex;
-      gap: 12px;
-      z-index: 1000;
-    }
-    body[dir="rtl"] .top-controls {
-      right: auto;
-      left: 20px;
+    .register-link a:hover {
+      text-decoration: underline;
     }
 
+    /* ===================================================== */
+    /* 🔥 EXACT RTL BUTTON STYLES — MATCHING SIGNUP PAGE 🔥  */
+    /* Dimensions, height, padding, font-size, border-radius, gap, hover effect
+       Fully identical to the RTL toggle button on the signup page */
+    .top-controls {
+      position: fixed;
+      top: 20px;
+      right: 24px;
+      display: flex;
+      gap: 10px;           /* signup uses gap:10px on .top-controls (mobile might differ) */
+      z-index: 1000;
+    }
+
+    body[dir="rtl"] .top-controls {
+      right: auto;
+      left: 24px;
+    }
+
+    /* Dark mode toggle icon (unchanged, but keep consistent look) */
     .control-icon {
       background: var(--card-bg);
       border: 1px solid rgba(252, 135, 13, 0.4);
-      width: 42px;
-      height: 42px;
+      width: 38px;         /* signup width: 38px */
+      height: 38px;        /* signup height: 38px */
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -404,159 +438,201 @@
       transition: all 0.2s;
       backdrop-filter: blur(4px);
     }
+
     body.dark .control-icon {
       background: #000000;
       border-color: rgba(252, 159, 46, 0.5);
     }
 
     .control-icon:hover {
-      transform: scale(1.05);
+      transform: scale(1.03);
       border-color: #FC870D;
       background: rgba(252, 135, 13, 0.15);
     }
 
     .control-icon i {
-      font-size: 1.2rem;
+      font-size: 1rem;    /* signup size: 1rem (exact) */
       color: #FC870D;
     }
 
+    /* =========  RTL BUTTON — EXACT REPLICA FROM SIGNUP ========= */
     .rtl-text-btn {
       background: var(--card-bg);
       border: 1px solid rgba(252, 135, 13, 0.4);
-      padding: 0 16px;
-      height: 42px;
-      border-radius: 42px;
+      padding: 0 12px;           /* signup horizontal padding: 0 12px */
+      height: 38px;              /* signup exact height: 38px */
+      border-radius: 40px;       /* signup: 40px rounded */
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
       box-shadow: var(--shadow-sm);
-      transition: all 0.2s;
+      transition: all 0.2s ease;
       backdrop-filter: blur(4px);
-      font-weight: 600;
-      font-size: 0.8rem;
+      font-weight: 600;          /* signup: 600 */
+      font-size: 0.7rem;         /* signup: 0.7rem */
       font-family: var(--font-body);
       color: #FC870D;
-      gap: 8px;
+      gap: 6px;                  /* signup gap: 6px */
+      line-height: 1;           /* ensures vertical centering identical */
+      letter-spacing: normal;
+      text-transform: none;
     }
+
     body.dark .rtl-text-btn {
       background: #000000;
       border-color: rgba(252, 159, 46, 0.5);
     }
 
     .rtl-text-btn:hover {
-      transform: scale(1.03);
+      transform: scale(1.02);    /* signup hover scale: 1.02 (instead of 1.03) */
       border-color: #FC870D;
       background: rgba(252, 135, 13, 0.15);
     }
 
-    /* Error Message */
+    /* Ensure the span text aligns perfectly */
+    .rtl-text-btn span {
+      display: inline-block;
+      font-weight: 600;
+      font-size: 0.7rem;
+    }
+
+    /* Error message styling */
     .error-message {
       background: rgba(231, 76, 60, 0.12);
       border-left: 4px solid #e74c3c;
       padding: 10px 14px;
       border-radius: 16px;
-      margin-bottom: 18px;
+      margin-bottom: 20px;
       font-size: 0.8rem;
       color: #e74c3c;
       display: none;
+      align-items: center;
+      gap: 10px;
     }
 
-    .error-message.show { display: flex; gap: 8px; align-items: center; }
+    .error-message.show {
+      display: flex;
+    }
 
-    /* RTL Overrides */
+    /* ========== RTL PERFECT ALIGNMENT (no left icons, but toggle flips) ========== */
+    body[dir="rtl"] .input-field {
+      padding: var(--input-padding-top) var(--input-padding-left) var(--input-padding-bottom) var(--input-padding-right);
+    }
+
     body[dir="rtl"] .password-toggle {
       right: auto;
       left: 18px;
     }
+
     body[dir="rtl"] .input-label i {
       margin-right: 0;
       margin-left: 8px;
     }
+
     body[dir="rtl"] .checkbox-label {
       flex-direction: row-reverse;
     }
+
     body[dir="rtl"] .social-btn {
       flex-direction: row-reverse;
     }
-    body[dir="rtl"] .register-link a i {
-      transform: rotate(180deg);
-      display: inline-block;
-    }
+
     body[dir="rtl"] .logo-wrapper {
       flex-direction: row-reverse;
     }
 
-    /* Responsive Refinements */
-    @media (max-width: 520px) {
-      body { padding: 12px; }
-      .login-card { padding: 24px 22px; }
-      .logo-text { font-size: 1.6rem; }
-      .card-title h1 { font-size: 1.4rem; }
-      .input-field { padding: 11px 16px; }
+    /* Responsive: exactly match signup behavior on small screens */
+    @media (max-width: 550px) {
+      .login-card {
+        padding: 26px 24px;
+      }
+      :root {
+        --input-padding-left: 14px;
+        --input-padding-right: 44px;
+      }
+      .login-btn {
+        height: 50px;
+      }
+      .social-btn {
+        height: 46px;
+      }
     }
 
-    @media (max-width: 440px) {
-      .login-card { padding: 20px 18px; }
-      .logo-section { margin-bottom: 18px; }
-      .logo-text { font-size: 1.5rem; }
-      .card-title { margin-bottom: 18px; }
-      .card-title h1 { font-size: 1.3rem; }
-      .form-group { margin-bottom: 14px; }
-      .options-row { margin-bottom: 20px; }
-      .login-btn { padding: 11px; font-size: 0.9rem; }
+    @media (max-width: 450px) {
+      .login-card {
+        padding: 22px 20px;
+      }
+      .logo-text {
+        font-size: 1.7rem;
+      }
+      .card-title h1 {
+        font-size: 1.5rem;
+      }
+      :root {
+        --input-padding-left: 12px;
+        --input-padding-right: 44px;
+      }
+      .login-btn {
+        height: 48px;
+      }
+      .social-btn {
+        height: 44px;
+      }
+    }
+
+    /* CRITICAL: Scale only for very narrow devices to prevent overlapping (same as signup) */
+    @media (max-width: 420px) {
+      .top-controls {
+        top: 6px;
+        right: 8px;
+        gap: 6px;
+      }
+      body[dir="rtl"] .top-controls {
+        left: 8px;
+        right: auto;
+      }
+      .control-icon, .rtl-text-btn {
+        transform: scale(0.96);
+      }
+      .signup-container, .login-container {
+        margin-top: 40px;
+      }
     }
 
     @media (max-width: 380px) {
-      .login-card { padding: 18px 14px; }
-      .logo-text { font-size: 1.35rem; }
-      .logo-tagline { font-size: 0.6rem; }
-      .card-title h1 { font-size: 1.2rem; }
-      .input-field { font-size: 0.85rem; padding: 10px 14px; }
-      .social-btn span { display: none; }
-      .social-btn { padding: 9px; }
-      .social-btn i { font-size: 1.1rem; }
-      .top-controls { top: 12px; right: 12px; gap: 8px; }
-      .control-icon { width: 36px; height: 36px; }
-      .rtl-text-btn { height: 36px; padding: 0 12px; font-size: 0.7rem; }
+      .login-card {
+        padding: 18px 16px;
+      }
+      .social-btn span {
+        display: none;
+      }
+      .social-btn {
+        gap: 6px;
+      }
+      :root {
+        --input-padding-left: 12px;
+        --input-padding-right: 40px;
+      }
+      .control-icon, .rtl-text-btn {
+        transform: scale(0.96);
+      }
     }
 
-    @media (max-height: 700px) and (min-width: 400px) {
-      .login-card { padding: 20px 28px; }
-      .logo-section { margin-bottom: 12px; }
-      .logo-text { font-size: 1.5rem; }
-      .card-title { margin-bottom: 14px; }
-      .card-title h1 { font-size: 1.3rem; }
-      .form-group { margin-bottom: 12px; }
-      .options-row { margin-bottom: 16px; }
-      .login-btn { margin-bottom: 14px; padding: 10px; }
-      .divider { margin: 12px 0; }
-    }
-
-    @media (max-height: 580px) {
-      .login-card { padding: 14px 20px; }
-      .logo-section { margin-bottom: 8px; }
-      .logo-text { font-size: 1.3rem; }
-      .logo-tagline { font-size: 0.55rem; padding: 2px 10px; }
-      .card-title h1 { font-size: 1.1rem; }
-      .card-title p { font-size: 0.7rem; }
-      .input-field { padding: 8px 14px; font-size: 0.8rem; }
-      .login-btn { padding: 8px; font-size: 0.85rem; }
-    }
-
+    /* loading spinner state */
     .login-btn.loading {
       pointer-events: none;
-      opacity: 0.8;
+      opacity: 0.85;
     }
     .login-btn.loading i {
-      animation: spin 1s linear infinite;
+      animation: spin 0.9s linear infinite;
     }
     @keyframes spin {
       from { transform: rotate(0deg);}
       to { transform: rotate(360deg);}
     }
 
-    /* Subtle background decoration */
+    /* subtle background decor — honey touch (same as signup) */
     body::before {
       content: '';
       position: fixed;
@@ -574,22 +650,18 @@
     body::after {
       content: '🍯';
       position: fixed;
-      bottom: 16px;
-      left: 16px;
-      font-size: 1.4rem;
+      bottom: 20px;
+      left: 20px;
+      font-size: 1.6rem;
       opacity: 0.08;
       pointer-events: none;
       z-index: -1;
     }
     body.dark::after { opacity: 0.05; }
-    body[dir="rtl"]::after { left: auto; right: 16px; }
+    body[dir="rtl"]::after { left: auto; right: 20px; }
     
-    @media (max-height: 620px) {
+    @media (max-height: 650px) {
       body::after { display: none; }
-    }
-    
-    .login-card, .input-field, .social-btn, .control-icon, .rtl-text-btn {
-      transition: background 0.3s ease, border-color 0.2s ease, transform 0.2s ease;
     }
   </style>
 </head>
@@ -600,14 +672,14 @@
     <i class="fas fa-moon"></i>
   </div>
   <div class="rtl-text-btn" id="rtlToggleBtn">
-     <span id="rtlBtnText">RTL</span>
+    <span id="rtlBtnText">RTL</span>
   </div>
 </div>
 
 <div class="login-container">
   <div class="login-card">
     <div class="logo-section">
-      <div class="logo-wrapper">
+      <div class="logo-wrapper" id="logoDoubleClick">
         <i class="fas fa-jar logo-icon"></i>
         <span class="logo-text"><a href="index.html">GoldenHive</a></span>
       </div>
@@ -629,15 +701,15 @@
       <div class="form-group">
         <label class="input-label"><i class="fas fa-envelope"></i> Email Address</label>
         <div class="input-wrapper">
-          <input type="email" id="emailInput" class="input-field" placeholder="hello@goldenhive.com" required>
+          <input type="email" id="emailInput" class="input-field" placeholder="hello@goldenhive.com" required autocomplete="email">
         </div>
       </div>
 
       <div class="form-group">
         <label class="input-label"><i class="fas fa-lock"></i> Password</label>
         <div class="input-wrapper">
-          <input type="password" id="passwordInput" class="input-field" placeholder="••••••••" required>
-          <button type="button" class="password-toggle" id="togglePassword">
+          <input type="password" id="passwordInput" class="input-field" placeholder="••••••••" required autocomplete="current-password">
+          <button type="button" class="password-toggle" id="togglePassword" aria-label="Show password">
             <i class="far fa-eye-slash"></i>
           </button>
         </div>
@@ -681,7 +753,7 @@
     const passwordInput = document.getElementById('passwordInput');
     const loginBtn = document.getElementById('loginBtn');
     const errorDiv = document.getElementById('loginError');
-    const errorText = document.getElementById('errorText');
+    const errorTextSpan = document.getElementById('errorText');
     const togglePasswordBtn = document.getElementById('togglePassword');
     const themeToggle = document.getElementById('themeToggle');
     const rtlToggleBtn = document.getElementById('rtlToggleBtn');
@@ -692,22 +764,23 @@
     const googleBtn = document.getElementById('googleLogin');
     const appleBtn = document.getElementById('appleLogin');
 
-    // Demo credentials for GoldenHive
+    // Demo credentials (exact match from signup demo flow)
     const DEMO_EMAIL = "golden@goldenhive.com";
     const DEMO_PASSWORD = "goldenhive123";
 
     function showError(message) {
-      errorText.innerText = message;
+      errorTextSpan.innerText = message;
       errorDiv.classList.add('show');
       setTimeout(() => {
         errorDiv.classList.remove('show');
-      }, 3200);
+      }, 3500);
     }
 
-    function showSuccessToast(msg) {
+    function showSuccessMessage(msg) {
       alert(msg);
     }
 
+    // Load saved "remember me" credentials if any
     function loadSavedCredentials() {
       const savedEmail = localStorage.getItem('goldenhive_email');
       const savedRemember = localStorage.getItem('goldenhive_remember');
@@ -718,6 +791,7 @@
     }
     loadSavedCredentials();
 
+    // Login validation & simulation
     function handleLogin(email, password) {
       if (email === DEMO_EMAIL && password === DEMO_PASSWORD) {
         if (rememberCheck.checked) {
@@ -728,12 +802,12 @@
           localStorage.setItem('goldenhive_remember', 'false');
         }
         loginBtn.classList.add('loading');
-        const originalContent = loginBtn.innerHTML;
+        const originalHTML = loginBtn.innerHTML;
         loginBtn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Signing In...';
         setTimeout(() => {
           loginBtn.classList.remove('loading');
-          loginBtn.innerHTML = originalContent;
-          showSuccessToast('🍯 Welcome to GoldenHive!\n✨ Login Successful. Explore our artisanal honey collection.');
+          loginBtn.innerHTML = originalHTML;
+          showSuccessMessage('🍯 Welcome to GoldenHive!\n✨ Login Successful. Explore our artisanal honey & beeswax collection.');
         }, 800);
         return true;
       } else {
@@ -751,6 +825,7 @@
       handleLogin(email, password);
     });
 
+    // Toggle password visibility (functional eye)
     let passwordVisible = false;
     togglePasswordBtn.addEventListener('click', () => {
       passwordVisible = !passwordVisible;
@@ -758,7 +833,7 @@
       togglePasswordBtn.innerHTML = passwordVisible ? '<i class="far fa-eye"></i>' : '<i class="far fa-eye-slash"></i>';
     });
 
-    // Dark Mode – pure black card and body background
+    // Dark Mode Toggle — pure black card & background integration
     const body = document.body;
     const themeIcon = themeToggle.querySelector('i');
     function setDarkMode(enabled) {
@@ -778,7 +853,7 @@
     setDarkMode(savedDark === 'enabled');
     themeToggle.addEventListener('click', () => setDarkMode(!body.classList.contains('dark')));
 
-    // RTL handling
+    // RTL / LTR Toggle (full bidirectional support)
     const htmlElem = document.documentElement;
     function setDirection(direction) {
       htmlElem.setAttribute('dir', direction);
@@ -790,26 +865,34 @@
     rtlToggleBtn.addEventListener('click', () => {
       const currentDir = htmlElem.getAttribute('dir');
       setDirection(currentDir === 'rtl' ? 'ltr' : 'rtl');
+      // subtle feedback to match interactive style
       rtlToggleBtn.style.transform = 'scale(0.96)';
       setTimeout(() => { rtlToggleBtn.style.transform = ''; }, 150);
     });
 
+    // Forgot password demo
     forgotLink.addEventListener('click', (e) => {
       e.preventDefault();
-      alert('📧 Password reset link has been sent to your registered email.');
+      alert('📧 Password reset link has been sent to your registered email (demo).');
     });
    
+    // Social login mockups
     googleBtn.addEventListener('click', () => alert('🔐 Google Sign-In (Demo) — Secure authentication coming soon.'));
     appleBtn.addEventListener('click', () => alert('🍎 Apple Sign-In (Demo) — Seamless login experience.'));
 
-    // Double-click logo to auto-fill demo credentials
+    // Double-click on logo to autofill demo credentials (GoldenHive easter egg)
     const logoWrapper = document.querySelector('.logo-wrapper');
     if (logoWrapper) {
       logoWrapper.addEventListener('dblclick', () => {
         emailInput.value = DEMO_EMAIL;
         passwordInput.value = DEMO_PASSWORD;
         showError('🍯 Demo credentials filled! Click Sign In to experience GoldenHive.');
+        setTimeout(() => errorDiv.classList.remove('show'), 2500);
       });
+    }
+
+    if (registerLink) {
+      registerLink.addEventListener('click', (e) => {});
     }
   })();
 </script>
